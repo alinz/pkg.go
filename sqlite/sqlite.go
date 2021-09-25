@@ -8,6 +8,13 @@ import (
 	"zombiezen.com/go/sqlite/sqlitex"
 )
 
+// Reason behind this is that
+// I don't want to import two packages that
+// starts with sqlite into my project
+// I can use the type alias in my project
+type Conn = sqlite.Conn
+type Stmt = sqlite.Stmt
+
 // Database struct which holds pool of connection
 type Database struct {
 	pool *sqlitex.Pool
