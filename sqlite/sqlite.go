@@ -15,6 +15,8 @@ import (
 type Conn = sqlite.Conn
 type Stmt = sqlite.Stmt
 
+var SavePoint = sqlitex.Save
+
 // Database struct which holds pool of connection
 type Database struct {
 	pool *sqlitex.Pool
