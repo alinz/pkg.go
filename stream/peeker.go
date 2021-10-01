@@ -17,7 +17,8 @@ func Peek(r io.Reader, n int64) ([]byte, io.Reader) {
 		r = Error(err)
 	}
 
-	return buffer.Bytes(), io.MultiReader(bytes.NewReader(buffer.Bytes()), r)
+	data := buffer.Bytes()
+	return data, io.MultiReader(bytes.NewReader(data), r)
 }
 
 // PeekCloser is a io.ReadCloser that peeks n bytes from the reader
