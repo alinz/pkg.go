@@ -4,11 +4,11 @@ import (
 	"unicode"
 )
 
-func isAlphaNumeric(c rune) bool {
+func IsAlphaNumeric(c rune) bool {
 	return unicode.IsLetter(c) || unicode.IsDigit(c)
 }
 
-func ignoreWhiteSpace(l *Lexer) {
+func IgnoreWhiteSpace(l *Lexer) {
 	l.AcceptRun(` \t\n`)
 	l.Ignore()
 }
