@@ -6,18 +6,17 @@ import (
 	"net/http"
 	"os"
 	"syscall"
+	"time"
 )
 
 type Server struct {
-	handler http.Handler
-	network string
-	addr    string
-	closed  chan struct{}
+	handler    http.Handler
+	network    string
+	addr       string
+	httpServer *http.Server
 }
 
 func (s *Server) Start(ctx context.Context) error {
-	errs := make(chan error, 1)
-
 	lc := net.ListenConfig{
 		Control: func(network, address string, conn syscall.RawConn) error {
 			var operr error
@@ -39,32 +38,28 @@ func (s *Server) Start(ctx context.Context) error {
 		return err
 	}
 
-	server := &http.Server{
+	s.httpServer = &http.Server{
 		Handler: s.handler,
 	}
 
+	errs := make(chan error, 1)
 	go func() {
-		errs <- server.Serve(l)
+		errs <- s.httpServer.Serve(l)
 	}()
 
 	select {
 	case <-ctx.Done():
-		return server.Shutdown(ctx)
+		go s.Stop(context.Background())
+		return ctx.Err()
 	case err := <-errs:
 		return err
-	case <-s.closed:
-		return server.Shutdown(ctx)
+	case <-time.After(2 * time.Second):
+		return nil
 	}
 }
 
 func (s *Server) Stop(ctx context.Context) error {
-	select {
-	case <-ctx.Done():
-		return ctx.Err()
-	default:
-		close(s.closed)
-		return nil
-	}
+	return s.httpServer.Shutdown(ctx)
 }
 
 func NewServer(network, addr string, handler http.Handler) *Server {
@@ -81,6 +76,5 @@ func NewServer(network, addr string, handler http.Handler) *Server {
 		handler: handler,
 		network: network,
 		addr:    addr,
-		closed:  make(chan struct{}, 1),
 	}
 }
