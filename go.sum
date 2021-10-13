@@ -6,6 +6,8 @@ github.com/alinz/crypto.go v0.0.0-20210923173740-736c9de456c7/go.mod h1:MUTG4do0
 github.com/alinz/hash.go v0.0.0-20210826155239-e949304132fd/go.mod h1:uRSiRmHsffw1dpzfC2QufUZ4AcB4I+etV/wg4pZcfm4=
 github.com/alinz/hash.go v0.0.0-20210925173514-fada513b965b h1:Jv4PoKUw3ysW5u+ZqwJmnoMwWZWu1UWxCZWkDe5vGm0=
 github.com/alinz/hash.go v0.0.0-20210925173514-fada513b965b/go.mod h1:uRSiRmHsffw1dpzfC2QufUZ4AcB4I+etV/wg4pZcfm4=
+github.com/alinz/hash.go v0.0.0-20211013151738-120d1a5878e0 h1:e6Y5yY29yTEz8PnR04gxDYX0VKHOFtQHfFekxvxLzDE=
+github.com/alinz/hash.go v0.0.0-20211013151738-120d1a5878e0/go.mod h1:uRSiRmHsffw1dpzfC2QufUZ4AcB4I+etV/wg4pZcfm4=
 github.com/chzyer/logex v1.1.10/go.mod h1:+Ywpsq7O8HXn0nuIou7OrIPyXbp3wmkHB+jjWRnGsAI=
 github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e/go.mod h1:nSuG5e5PlCu98SY8svDHJxuZscDgtXS6KTTbou5AhLI=
 github.com/chzyer/test v0.0.0-20180213035817-a1ea475d72b1/go.mod h1:Q3SI9o4m/ZMnBNeIyt5eFwwo7qiLfzFZmjNmxjkiQlU=

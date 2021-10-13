@@ -40,9 +40,7 @@ func TestUpload(t *testing.T) {
 	content := strings.NewReader("Hello World")
 
 	fmt.Println("sending")
-	req, err := upload.CreateRequest(server.URL, content, "hello.txt", testPayload{
-		ID: "1234",
-	})
+	req, err := upload.CreateRequest(server.URL, content, "hello.txt", nil)
 	if err != nil {
 		t.Fatal(err)
 	}

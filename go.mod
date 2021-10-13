@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/alinz/crypto.go v0.0.0-20210923173740-736c9de456c7
-	github.com/alinz/hash.go v0.0.0-20210925173514-fada513b965b
+	github.com/alinz/hash.go v0.0.0-20211013151738-120d1a5878e0
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/rs/xid v1.3.0
